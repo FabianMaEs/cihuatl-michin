@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a routerLink="/"><img src="./../../assets/logo.png" alt="Logo" class="logo"></a>
+        <a class="navbar-brand" routerLink="/">Cihuatl Michin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a
+                    class="nav-link"
+                    routerLink="/index"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                  >
+                    Inicio
+                  </a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/about" routerLinkActive="active">Sobre Nosotras</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sobre Aguascalientes</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                        <li><a class="dropdown-item" routerLink="/ecosistemas" routerLinkActive="active">Ecosistemas del estado</a></li>
+                        <li><a class="dropdown-item" routerLink="/cuerpos-de-agua" routerLinkActive="active">Cuerpos de agua más importantes</a></li>
+                        <li><a class="dropdown-item" routerLink="/especies-nativas" routerLinkActive="active">Nuestras especies nativas</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" routerLink="/como-ayudar" routerLinkActive="active">Cómo Ayudar</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Juegos</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                        <li><a class="dropdown-item" routerLink="/memorama" routerLinkActive="active">Memorama</a></li>
+                        <li><a class="dropdown-item" routerLink="/quiz" routerLinkActive="active">Quiz</a></li>
+                        <li><a class="dropdown-item" routerLink="/ahorcado" routerLinkActive="active">Ahorcado</a></li>
+                    </ul>
+                </li>
+            </ul> 
+        </div>
+    </div>
+</nav>

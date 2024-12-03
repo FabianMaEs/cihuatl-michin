@@ -1,0 +1,133 @@
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.quiz-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #3e43aa, #8f94fb);
+    background-size: 400% 400%;
+    animation: gradientBackground 5s ease infinite;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+  
+    .header {
+      position: relative;
+      max-width: 800px;
+  
+      h1 {
+        font-size: 3rem;
+        margin: 10px 0;
+        font-family: 'Comic Sans MS', sans-serif;
+      }
+  
+      p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+      }
+  
+      .mascot {
+        width: 10rem;
+        position: absolute;
+  
+        &.mascot-left {
+          left: -20rem;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+  
+        &.mascot-right {
+          right: -20rem;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  
+    .start-button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #28a745;
+      color: white;
+      font-size: 1.5rem;
+      font-family: 'Comic Sans MS', sans-serif;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 300ms ease, background-color 300ms ease;
+  
+      &:hover {
+        background-color: #218838;
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  .quiz-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .mascot {
+    width: 100px;
+    position: absolute;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  
+    &.mascot-left {
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  
+    &.mascot-right {
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+  }
+  
+  #mute {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 300ms ease, background-color 300ms ease;
+  
+    &:hover {
+      background-color: #c82333;
+      transform: scale(1.1);
+    }
+  }
+
+  
+  

@@ -1,0 +1,76 @@
+.logo {
+    background-color: aliceblue;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+// Colores de tu paleta
+$black-pearl: #102d6c;
+$blue-chill: #0da4a3;
+$anzac: #deb04d;
+$william: #366b66;
+$elm: #22828d;
+
+// Sobrescribiendo clases de Bootstrap
+.navbar {
+  background-color: $black-pearl !important; // Fondo del navbar
+  color: $blue-chill;
+
+  .navbar-brand {
+    color: $anzac !important; // Sobrescribe color del texto del logo
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    &:hover {
+      color: $elm !important; // Hover en la marca
+    }
+  }
+
+  .nav-link {
+    color: $blue-chill !important; // Enlaces
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+      color: $anzac !important;
+      background-color: rgba(13, 164, 163, 0.2) !important;
+      border-radius: 5px;
+    }
+
+    &.active {
+      color: $anzac !important; // Enlace activo
+      font-weight: bold;
+      text-emphasis: underline;
+    }
+  }
+
+  .navbar-toggler {
+    background-color: $anzac !important; // Botón de colapso
+    border: none;
+
+    .navbar-toggler-icon {
+      background-image: linear-gradient(45deg, $blue-chill, $anzac) !important;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $william !important; // Fondo del menú desplegable
+    border-radius: 8px;
+    border: none;
+
+    .dropdown-item {
+      color: $anzac !important;
+
+      &:hover {
+        color: white !important;
+        background-color: $elm !important;
+      }
+    }
+  }
+
+  .logo {
+    max-height: 50px;
+    margin-right: 10px;
+  }
+}

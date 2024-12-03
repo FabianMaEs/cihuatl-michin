@@ -1,0 +1,184 @@
+:root {
+    --w: calc(70vw / 6);
+    --h: calc(70vh / 4);
+  }
+  
+  body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+  }
+  
+  /* Animación del fondo */
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  
+  /* Contenedor principal */
+  .ahorcado-container {
+    background: linear-gradient(135deg, #3e43aa, #8f94fb);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    color: white;
+    transition: background 0.5s ease;
+  }
+
+  /* Frase oculta */
+  .frase {
+    
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+    margin: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .frase span {
+    margin: 0 5px;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* Letras */
+  .letras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+  }
+
+  .letras button {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(90deg, #153e96, #0da4a3);
+    background-size: 200%; /* Duplicar el tamaño para permitir el movimiento */
+    background-position: left; /* Posición inicial */
+    border: white 1px solid;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-position 0.5s ease; /* Suaviza el cambio */
+  }
+
+  .letras button:hover {
+    transform: scale(1.2);
+    background-position: right; /* Mueve el gradiente hacia la derecha */
+  }
+
+  .letras button:disabled {
+    background: gray;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Barra de progreso */
+  .barra {
+    width: 80%;
+    height: 22px;
+    border: white 2px solid;
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .barra-errores {
+    height: 100%;
+    background: linear-gradient(to right, red, orange);
+    transition: width 0.5s ease;
+  }
+  
+  /* Mensajes de victoria o derrota */
+  .mensaje {
+    font-size: 2rem;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .victoria {
+    color: #4caf50; /* Verde para victoria */
+  }
+  
+  .derrota {
+    color: white; /* Rojo para derrota */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  
+  /* Botón de reinicio */
+  button.reiniciar {
+    background: linear-gradient(#153e96, #0da4a3);
+    background-size: 200%; /* Duplicar el tamaño para permitir el movimiento */
+    background-position: left; /* Posición inicial */
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-position 0.5s ease; /* Suaviza el cambio */
+  }
+  
+  button.reiniciar:hover {
+    transform: scale(1.1);
+    background-position: right; /* Mueve el gradiente hacia la derecha */
+  }
+
+
+  
+  @media (max-width: 768px) {
+    .frase {
+      font-size: 2rem;
+      letter-spacing: 0.3rem;
+    }
+  
+    .letras button {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  
+    button.reiniciar {
+      font-size: 1.2rem;
+      padding: 8px 15px;
+    }
+  }
+  

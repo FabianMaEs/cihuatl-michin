@@ -1,0 +1,305 @@
+:root {
+  --w: calc(70vw / 6);
+  --h: calc(70vh / 4);
+}
+
+* {
+  transition: all 0.5s;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg, #3e43aa, #8f94fb);
+  background-size: 400% 400%;
+  animation: gradientBackground 10s ease infinite;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: calibri;
+}
+
+@keyframes gradientBackground {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
+
+.memorama-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  height: 75vh;
+}
+
+
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Asegura que haya 4 columnas */
+  grid-gap: 3rem;;
+  width: 70vw;
+  height: 90vh;
+  max-width: 90vw;
+  max-height: 90vh; /* Asegura que no exceda el alto */
+  justify-content: center;
+  align-content: center;
+  margin: auto; /* Centra el contenedor en la pantalla */
+}
+
+
+.area-tarjeta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--w);
+  height: var(--h);
+  margin: auto; /* Asegura que las tarjetas estén centradas en su área */
+}
+
+.memorama-header {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  position: sticky;
+  top: 0;
+  right: 0;
+  margin-left: auto; /* Obliga al elemento a alinearse a la derecha */
+  text-align: right; /* Opcional, para alinear el contenido al lado derecho */
+  width: auto; /* Asegúrate de que no se extienda por completo */
+  padding-right: 2rem; /* Añade un poco de espacio a la derecha */
+  padding-top: 2rem; /* Añade un poco de espacio arriba */
+  z-index: 1; /* Asegura que esté por encima del tablero */
+  .info {
+    text-shadow: #153e96 2px 2px 4px;
+  }
+}
+
+.tarjeta {
+  width: 21vb;
+  height: 21vb;
+  perspective: 1000px;
+  position: relative;
+}
+
+.cara {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Tamaño del ícono */
+  box-shadow: inset 0 0 0 5px white;
+}
+
+.flipped .cara.superior {
+  transform: rotateY(180deg);
+}
+
+.flipped .cara.trasera {
+  transform: rotateY(0deg);
+}
+
+.trasera {
+  background-color: #f1f1f1;
+  transform: rotateY(180deg); /* Oculta la cara trasera */
+}
+
+.superior {
+  background: linear-gradient(#153e96, #0da4a3, #153e96);
+}
+
+.superior:hover {
+  transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+  color: white;
+}
+
+/* Ajusta las imágenes dentro de la tarjeta para que no sobresalgan */
+.cara img {
+  max-width: 90%; /* Limita el tamaño de la imagen dentro de la tarjeta */
+  max-height: 90%; /* Limita la altura también para mantener la proporción */
+  object-fit: contain; /* Ajusta la imagen para que mantenga su proporción dentro del contenedor */
+}
+
+.nuevo-juego {
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(#153e96, #0da4a3);
+  padding: 1.3rem;
+  border-radius: 15px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: x-large;
+  align-self: center; /* Centra el botón horizontalmente */
+}
+
+.nuevo-juego:hover {
+  transform:scale(1.1);
+  color: white;
+}
+
+@import './../../app/styles/colores.scss';
+
+// Contenedor del contador
+.contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 99vw;
+  color: white;
+  font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+  text-align: center;
+
+  h2 {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #e9ecef;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: pulse 0.5s infinite alternate ease-in-out;
+  }
+
+  @keyframes pulse {
+    from {
+      transform: scale(1);
+      rotate: 0deg;
+    }
+    to {
+      transform: scale(1.2);
+      rotate: 10deg;
+    }
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3e43aa, #8f94fb);
+  background-size: 400% 400%;
+  animation: gradientBackground 5s ease infinite;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+
+.results h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+  color: whitesmoke;
+}
+
+.results span {
+  display: block;
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+@keyframes pulsePoco {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contador h2 {
+    font-size: 4rem;
+  }
+  .tarjeta {
+    width: 19vb;
+    height: 19vb;
+  }
+}
+
+@media (max-width: 992px) {
+  .contador h2 {
+    font-size: 3.5rem;
+  }
+  .tarjeta {
+    width: 17vb;
+    height: 17vb;
+  }
+}
+
+@media (max-width: 768px) {
+  .contador h2 {
+    font-size: 3rem;
+    width: 90vw;
+  }
+  .memorama-container {
+    height: 100vh;
+  }
+
+  #tablero {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+  }
+
+  .tarjeta {
+    width: 13vb;
+    height: 13vb;
+    perspective: 1000px;
+    position: relative;
+    .trasera {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .nuevo-juego {
+    font-size: 1.2rem;
+  }
+  
+}

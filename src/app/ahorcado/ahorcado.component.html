@@ -1,0 +1,26 @@
+<body>
+    <div class="ahorcado-container">
+        <h1>Ahorcado</h1>
+        <p><strong>Frase a adivinar:</strong></p>
+        <div class="frase">
+            <span *ngFor="let letra of fraseOculta">{{ letra }}</span>
+        </div>
+    
+        <div class="letras">
+            <button *ngFor="let letra of abecedario" [disabled]="letrasUsadas.includes(letra) || juegoTerminado"
+                (click)="adivinarLetra(letra)">
+                {{ letra }}
+            </button>
+        </div>
+    
+        <div class="barra">
+            <div class="barra-errores" [style.width.%]="barraProgreso"></div>
+        </div>
+    
+        <div *ngIf="juegoTerminado">
+            <p *ngIf="victoria" class="mensaje victoria">¡Ganaste! 🎉</p>
+            <p *ngIf="!victoria" class="mensaje derrota">Perdiste. 😢 La frase era: "{{ fraseOriginal }}"</p>
+            <button class="reiniciar" (click)="reiniciarJuego()">Reiniciar</button>
+        </div>
+    </div>
+</body>

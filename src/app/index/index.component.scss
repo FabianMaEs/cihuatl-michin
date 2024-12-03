@@ -1,0 +1,386 @@
+@import "./../styles/colores.scss";
+
+.image-container {
+  width: 20rem;
+  height: 20rem;
+  background-image: url("./../../assets/foto1.jpg"); /* Ruta de tu imagen */
+  background-size: 200%; /* Tamaño del fondo para que se desplace */
+  background-repeat: no-repeat;
+  -webkit-animation: bg-pan-br 15s both;
+  animation: bg-pan-br 15s both;
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.slide-in-left {
+	animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bg-pan-br {
+  0% {
+    background-position: 58% 80%;
+  }
+  33% {
+    background-position: 0% 75%;
+    background-size: 50rem;
+  }
+  66% {
+    background-size: 20rem;
+  }
+  100% {
+    background-position: 58% 80%;
+  }
+}
+
+h1 {
+  color: white;
+  letter-spacing: 1rem;
+}
+
+/* Estado inicial: Oculto */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Animación de entrada: Fade-In */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación de entrada: Slide-In desde la derecha */
+.slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Estado inicial para Slide-In */
+.hidden-slide-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+img.focus-in-expand {
+  width: 70%;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.lead {
+  // Texto justificado}
+  text-align: justify;
+  margin-top: 2rem;
+  max-width: 35rem;
+}
+
+
+
+.arriba {
+  z-index: 5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Fuentes */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, $black-pearl, $william);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  height: 100vh;
+  position: relative; /* Para que el pseudo-elemento se posicione dentro */
+  display: flex;
+  align-items: center;
+  color: #fff;
+  padding: 40px 20px;
+  background: linear-gradient(305deg, $black-pearl, $william); /* Fondo del header */
+  color: #0878c3;
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+
+    .header-text {
+      margin-bottom: 20px;
+
+    }
+  }
+}
+
+/* Video Section */
+.video-section {
+  color: $elm;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: $william; /* Fondo de la sección de video */
+
+  .video-container {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+video {
+  width: 99%;
+  border: 5px solid $blue-chill;
+  border-radius: 10px;
+}
+
+/* About Section */
+.about-section {
+  color: $black-pearl;
+  padding: 40px 20px;
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .about-item {
+        flex: 1 1 calc(50% - 20px);
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+        .subtitle {
+          color: $blue-chill;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* Impact Section */
+.impact-section {
+  color: #fff;
+  padding: 40px 20px;
+
+  .impact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .impact-quote {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .impact-stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      .stat {
+        background: $blue-chill;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+        .stat-title {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .lead {
+      max-width: fit-content;
+    }
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.wave-bottom {
+  position: absolute;
+  bottom: 0rem;
+  left: 0;
+  width: 100%;
+  transform: rotate(180deg);
+  z-index: 0;
+}
+
+
+@media screen and (max-width: 2000px) {
+  .wave-bottom {
+    bottom: -2rem;
+  }
+  
+}
+
+
+@media screen and (max-width: 1200px) {
+  .wave-bottom {
+    bottom: 0rem;
+  }
+  
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    padding: 20px;
+    height: 120vh;
+  }
+
+  .wave-bottom {
+    bottom: 0rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .video-section {
+    padding: 20px;
+  }
+
+  .about-content {
+    flex-direction: row;
+  }
+
+  .about-section {
+    padding: 20px;
+  }
+
+  .impact-section {
+    padding: 20px;
+  }
+
+  .impact-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 20px;
+    height: 120vh;
+  }
+
+  .wave-bottom {
+    bottom: 0rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .video-section {
+    padding: 20px;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-section {
+    padding: 20px;
+  }
+
+  .impact-section {
+    padding: 20px;
+  }
+
+  .impact-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .wave-bottom {
+    bottom: -2rem;
+  }
+
+  header {
+    height: 120vh;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .video-section {
+    padding: 20px;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-section {
+    padding: 20px;
+  }
+
+  .impact-section {
+    padding: 20px;
+  }
+
+  .impact-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

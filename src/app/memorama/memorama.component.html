@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Memorama</title>
+</head>
+
+<body>
+
+  <div *ngIf="!countdownFinished">
+    <div [@fade] class="contador">
+      <h2>{{ countdown || yaMensaje }}</h2>
+    </div>
+  </div>
+
+  <!-- Encabezado -->
+  <header *ngIf="countdownFinished" class="memorama-header">
+    <div class="info">
+      <div class="tiempo">Tiempo: {{ tiempo }}</div>
+      <div class="intentos">Movimientos: {{ movimientos }}</div>
+    </div>
+  </header>
+
+  <div *ngIf="countdownFinished" class="memorama-container">
+    <!-- Tablero --> 
+    <div id="tablero">
+      <div *ngFor="let tarjeta of tarjetas; let i = index" class="area-tarjeta" (click)="seleccionarTarjeta(i)">
+        <div class="tarjeta" [ngClass]="{'flipped': tarjeta.flipped || tarjeta.isMatched}">
+          <div class="cara trasera">
+            <img *ngIf="tarjeta.imgSrc" [src]="tarjeta.imgSrc" alt="Imagen">
+            <span *ngIf="tarjeta.text">{{ tarjeta.text }}</span>
+          </div>
+          <div class="cara superior">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="gameFinished && countdownFinished" [@fade]>
+      <div class="results">
+        <p [@staggerResults]>
+          <span>
+            <h2>{{ resultados }}</h2>
+          </span>
+<!--           <span>{{ puntuacion }}</span> -->
+          <br>
+          <span *ngIf="this.puntajeTotalMensaje != 0">{{ puntajeTotalMensaje }}</span>
+          <br>
+          <span>{{ mensajeFinal }} </span>
+          <br>
+          <span *ngIf="this.mensajeFinalizado" [@fade]>
+            <button class="nuevo-juego" (click)="reiniciarJuego()">Nuevo Juego</button>
+
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Botón de reinicio -->
+    <button class="nuevo-juego" (click)="reiniciarJuego()">Nuevo Juego</button>
+    <button (click)="mostrarResultados(true, 1017)">Ganar</button>
+    <br><br>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<body>
+
+  <div *ngIf="!countdownFinished">
+    <div [@fade] class="contador">
+      <h2>{{ countdown || yaMensaje }}</h2>
+    </div>
+  </div>
+
+  <div class="quiz-container" [@fadeSlideIn] *ngIf="!quizOver && countdownFinished">
+    <div class="timer">⏳ Tiempo: {{ timer }}s</div>
+    <div class="slide" [style.transform]="'translateX(-' + currentQuestionIndex * 100 + '%)'">
+      <div class="question preguntas" *ngFor="let question of questions; let i = index">
+        <h2>{{ question.question }}</h2>
+        <br>
+        <div class="options">
+          <button 
+            *ngFor="let option of question.options; let j = index"
+            (click)="selectAnswer(j)"
+            [class.correct]="selectedAnswer === j && j === question.correct"
+            [class.incorrect]="selectedAnswer === j && j !== question.correct"
+            [disabled]="selectedAnswer !== null"
+            class="option">
+            {{ option }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="quizOver && countdownFinished" [@fade]>
+    <div class="results">
+      <p [@staggerResults]>
+        <span>
+          <h2>{{ resultados }}</h2>
+        </span>
+        <span>{{ puntuacion }}</span>
+        <span>{{ mensajeFinal }}</span>
+        <br><br>
+        <span><button [@botonReiniciar] class="btn-restart" (click)="restartQuiz()" *ngIf="mostrarBotonReiniciar">
+            Reiniciar quiz
+          </button>
+        </span>
+      </p>
+    </div>
+  </div>
+  
+  
+</body>

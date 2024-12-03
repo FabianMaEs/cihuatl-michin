@@ -1,0 +1,248 @@
+@import './../styles/colores.scss';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $elm;
+  color: $black-pearl;
+}
+
+header {
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+
+  .btn {
+    background-color: $anzac;
+    border: none;
+    &:hover {
+      background-color: darken($anzac, 10%);
+    }
+  }
+}
+
+.flip-diagonal-1-fwd {
+  animation: flip-diagonal-1-fwd .4s cubic-bezier(.455, .03, .515, .955) both
+}
+
+@keyframes flip-diagonal-1-fwd {
+  0% {
+    transform: translateZ(0) rotate3d(1, 1, 0, 0deg)
+  }
+
+  100% {
+    transform: translateZ(160px) rotate3d(1, 1, 0, 180deg)
+  }
+}
+
+
+.parallax {
+  
+  color: white; /* Asegura el contraste */
+
+  /* Sección específica del header */
+  .header {
+    p {
+      font-size: 1.3rem;
+    }
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 100vh; /* Altura de la sección */
+    background: linear-gradient(to bottom, rgba(21, 62, 150, 0.5), rgba(34, 130, 141, 1)), 
+    url('./../../assets/ecosistema1.jpg') no-repeat center;
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repeticiones */
+    background-attachment: fixed; /* Efecto parallax */
+  }
+  
+  /* Sección específica de la clase "one" */
+  .one {
+    p {
+      font-size: 1.2rem;
+      text-align: justify;
+    }
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 110vh; /* Altura de la sección */
+    background: linear-gradient(to bottom, rgba(21, 62, 150, 0.5), rgba(34, 130, 141, 1)), 
+    url('./../../assets/foto2.jpg') no-repeat center;
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repeticiones */
+    background-attachment: fixed; /* Efecto parallax */
+  }
+
+  .two {
+    p {
+      font-size: 1.2rem;
+      text-align: justify;
+    }
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 120vh; /* Altura de la sección */
+    background: linear-gradient(to bottom, rgba(21, 62, 150, 0.8), rgba(34, 130, 141, 0.8)), 
+    url('./../../assets/info/AideG.jpg') no-repeat center;
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repeticiones */
+    background-attachment: fixed; /* Efecto parallax */
+  }
+
+
+    
+}
+
+/* Media queries para ajustar el contenido en dispositivos móviles */
+@media screen and (max-width: 1200px) {
+  .parallax {
+    .header {
+      height: 100vh;
+    }
+    .one {
+      height: 110vh;
+    }
+    .two {
+      height: 140vh;
+    }
+  } 
+}
+@media screen and (max-width: 992px) {
+  .parallax {
+    .header {
+      height: 100vh;
+    }
+    .one {
+      height: 120vh;
+    }
+    .two {
+      img {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+      }
+      p {
+        font-size: 1.15rem;
+      }
+      height: 160vh;
+    }
+  } 
+  
+}
+@media screen and (max-width: 768px) {
+  .parallax {
+    .header {
+      height: 100vh;
+    }
+    .one {
+      height: 110vh;
+    }
+    .two {
+      p {
+        font-size: 1.1rem;
+      }
+      height: 180vh;
+    }
+  } 
+}
+@media screen and (max-width: 576px) {
+  .parallax {
+    .header {
+      height: 100vh;
+    }
+    .one {
+      height: 120vh;
+    }
+    .two {
+      p {
+        font-size: 1.1rem;
+      }
+      height: 180vh;
+    }
+  } 
+}
+
+
+
+section {
+  padding: 3rem 0;
+
+  h2 {
+    color: $black-pearl;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    color: white;
+    font-size: 1rem;
+
+  }
+
+  .text-muted {
+    color: lighten($black-pearl, 20%);
+  }
+
+  img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: $william;
+}
+
+.styled-section {
+  background: linear-gradient(to bottom, #e8f5e9, #e0f7fa); /* Fondo suave con degradado */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.lead {
+  font-size: 1.2rem; /* Tamaño de fuente mayor */
+  line-height: 1.8; /* Altura de línea para mejor legibilidad */
+  margin-bottom: 16px;
+}
+
+.text-highlight {
+  font-weight: 500;
+  color: #2c6e49; /* Verde destacado */
+}
+
+.text-accent {
+  color: #00796b; /* Verde azulado */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* Espaciado para destacar */
+}
+
+.vision-text {
+  font-style: italic; /* Cursiva para darle un estilo único */
+  color: #4f5b62; /* Gris oscuro */
+}
+
+.divider {
+  width: 50%;
+  height: 3px;
+  background-color: #00796b; /* Color de la división */
+  margin: 20px auto; /* Centrado y espaciado */
+  border-radius: 5px;
+}
+
+.icon {
+  font-size: 1.5rem; /* Tamaño del ícono */
+  margin-right: 10px; /* Separación del texto */
+  vertical-align: middle;
+}
