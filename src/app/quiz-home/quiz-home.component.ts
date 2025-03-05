@@ -22,23 +22,12 @@ import { CommonModule } from '@angular/common';
     ]),
   ],
 })
-export class QuizHomeComponent implements OnInit {
+export class QuizHomeComponent   {
   
   backgroundMusic: HTMLAudioElement | undefined;
   sonidoPop = './../../assets/quiz/sonidos/pop.mp3';
 
-  ngOnInit(): void {
-    // Inicializar música de fondo 4 segundos después de cargar la página con una transición suave
-    setTimeout(() => {
-      this.backgroundMusic = new Audio('./../../assets/quiz/musica/fondo2.mp3a');
-      this.backgroundMusic.volume = 0.1;
-      this.backgroundMusic.loop = true;
-      this.backgroundMusic.play().catch((error) => {
-        console.error('Error al reproducir música:', error);
-      });
-      this.backgroundMusic.volume = 0.2;
-    }, 5500);
-  }
+
 
   toggleMusic() {
     if (this.backgroundMusic?.paused) {
@@ -77,18 +66,6 @@ export class QuizHomeComponent implements OnInit {
     if (this.backgroundMusic) {
       this.backgroundMusic.pause();
       this.backgroundMusic.currentTime = 0; // Reinicia la música
-    }
-  }
-
-  muteMusic() {
-    if (this.backgroundMusic?.volume === 0.2) {
-      this.backgroundMusic.volume = 0.1;
-    }
-    else if (this.backgroundMusic?.volume === 0.1) {
-      this.backgroundMusic.volume = 0;
-    }
-    else {
-      this.backgroundMusic!.volume = 0.2;
     }
   }
   

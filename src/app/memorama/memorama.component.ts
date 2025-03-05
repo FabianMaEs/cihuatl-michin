@@ -54,14 +54,14 @@ export class MemoramaComponent implements OnInit {
   mostrarBotonReiniciar: boolean = false
   timeout: any;
 
-  sonidoHoja = './../../assets/quiz/sonidos/woosh.mp3';
-  sonidoCorrecto = './../../assets/memorama/sonidos/correcto.mp3';
-  sonidoIncorrecto = './../../assets/memorama/sonidos/incorrecto.mp3';
-  sonidoPop = './../../assets/quiz/sonidos/pop.mp3';
-  sonidoVictoria = './../../assets/quiz/sonidos/victoria.mp3';
-  sonidoDerrota = './../../assets/quiz/sonidos/derrota.mp3';
-  sonidoIniciarTimer = './../../assets/quiz/sonidos/beeps.mp3';
-  tecla = './../../assets/quiz/sonidos/tecla.mp3';
+  sonidoHoja = 'assets/quiz/sonidos/woosh.mp3';
+  sonidoCorrecto = 'assets/memorama/sonidos/correcto.mp3';
+  sonidoIncorrecto = 'assets/memorama/sonidos/incorrecto.mp3';
+  sonidoPop = 'assets/quiz/sonidos/pop.mp3';
+  sonidoVictoria = 'assets/quiz/sonidos/victoria.mp3';
+  sonidoDerrota = 'assets/quiz/sonidos/derrota.mp3';
+  sonidoIniciarTimer = 'assets/quiz/sonidos/beeps.mp3';
+  tecla = 'assets/quiz/sonidos/tecla.mp3';
   countdownFinished = false;
   gameFinished: boolean = false;
 
@@ -89,8 +89,8 @@ export class MemoramaComponent implements OnInit {
   }
 
   startGame() {
-/*     this.countdownFinished = true;
-    this.generarTablero(); */
+    /*     this.countdownFinished = true;
+        this.generarTablero(); */
     this.playSound(this.sonidoIniciarTimer);
 
     // Limpia intervalos previos si existen
@@ -132,20 +132,33 @@ export class MemoramaComponent implements OnInit {
   }
 
   private iconos: { img: string; text: string }[] = [];
-
-  cargarIconos(numberOfPairs: number = 6) {
+  
+  cargarIconos(numeroDeParejas: number = 6) {
+    const assets = 'assets/memorama/';
     const iconos = [
-      { img: 'assets/memorama/ducha.jpeg', text: 'Bañarse en 5 minutos' },
-      { img: 'assets/memorama/cepillado.jpeg', text: 'Cerrar la llave mientras te cepillas' },
-      { img: 'assets/memorama/basura.jpeg', text: 'No tirar basura al agua' },
-      { img: 'assets/memorama/detergente.jpeg', text: 'Usar detergente biodegradable' },
-      { img: 'assets/memorama/gotera.jpeg', text: 'Reparar las goteras' },
-      { img: 'assets/memorama/lavado_auto.jpeg', text: 'Lavar el auto con cubeta' },
-      { img: 'assets/memorama/regado_plantas.jpeg', text: 'Regar las plantas por la noche' },
+      { img: assets + 'ducha.jpeg', text: 'Bañarse en 5 minutos' },
+      { img: assets + 'cepillado.jpeg', text: 'Cerrar la llave mientras te cepillas' },
+      { img: assets + 'basura.jpeg', text: 'No tirar basura al agua' },
+      { img: assets + 'detergente.jpeg', text: 'Usar detergente biodegradable' },
+      { img: assets + 'gotera.jpeg', text: 'Reparar las goteras' },
+      { img: assets + 'lavado_auto.jpeg', text: 'Lavar el auto con cubeta' },
+      { img: assets + 'regado_plantas.jpeg', text: 'Regar las plantas por la noche' },
+      { img: 'assets/info/nativas/carpitaBlanca.jpg', text: 'Carpita Blanca' },
+      { img: 'assets/info/nativas/charal.jpg', text: 'Charal' },
+      { img: 'assets/info/nativas/florLoto.jpg', text: 'Flor de Loto' },
+      { img: 'assets/info/nativas/garzaBlanca.jpg', text: 'Garza Blanca' },
+      { img: 'assets/info/nativas/guppy1.jpg', text: 'Guppy' },
+      { img: 'assets/info/nativas/matalote.jpg', text: 'Matalote' },
+      { img: 'assets/info/nativas/ranaMoctezuma.jpg', text: 'Rana Moctezuma' },
+      { img: 'assets/info/nativas/ranitaMadriguera.jpg', text: 'Ranita de Madriguera' },
+      { img: 'assets/info/nativas/sardinitaPlateada.jpg', text: 'Sardinita Plateada' },
+      { img: 'assets/info/nativas/tiro.jpg', text: 'Tiro' },
+      { img: 'assets/info/nativas/tortugaCasquito.jpg', text: 'Tortuga Casquito' }
     ];
+
     // Aleatorizar los iconos
     iconos.sort(() => Math.random() - 0.5);
-    this.iconos = iconos.slice(0, numberOfPairs); // Guardar iconos
+    this.iconos = iconos.slice(0, numeroDeParejas); // Guardar iconos
     return this.iconos;
   }
 
@@ -199,12 +212,15 @@ export class MemoramaComponent implements OnInit {
     const [index1, index2] = this.selecciones;
     const tarjeta1 = this.tarjetas[index1];
     const tarjeta2 = this.tarjetas[index2];
-
+    // Verificar si las tarjetas son iguales
     if (
-      (tarjeta1.imgSrc && tarjeta2.text && tarjeta2.text === this.obtenerTextoRelacionado(tarjeta1.imgSrc)) ||
-      (tarjeta2.imgSrc && tarjeta1.text && tarjeta1.text === this.obtenerTextoRelacionado(tarjeta2.imgSrc))
+      (tarjeta1.imgSrc &&
+        tarjeta2.text &&
+        tarjeta2.text === this.obtenerTextoRelacionado(tarjeta1.imgSrc)) ||
+      (tarjeta2.imgSrc &&
+        tarjeta1.text &&
+        tarjeta1.text === this.obtenerTextoRelacionado(tarjeta2.imgSrc))
     ) {
-      
       tarjeta1.isMatched = true;
       tarjeta2.isMatched = true;
       this.playSound(this.sonidoCorrecto);
@@ -226,7 +242,7 @@ export class MemoramaComponent implements OnInit {
   obtenerTextoRelacionado(imgSrc: string): string {
     const icono = this.iconos.find((icon) => icon.img === imgSrc);
     return icono ? icono.text : '';
-}
+  }
 
   verificarSiJuegoTerminado() {
     if (this.tarjetas.every((tarjeta) => tarjeta.isMatched)) {
@@ -237,15 +253,12 @@ export class MemoramaComponent implements OnInit {
         1000 + (5000 / (this.movimientos + 1)) + (3000 / (this.tiempo + 1)),
         100
       );
-      
       this.mostrarResultados();
     }
   }
 
-  mostrarResultados(gF: boolean = true, pT: number = 0) {
-    this.gameFinished = gF;
-    this.puntajeTotal = pT;
-    if(!this.gameFinished)
+  mostrarResultados() {
+    if (!this.gameFinished)
       return;
     // Esperar 1 segundo antes de mostrar los resultados
     this.timeout = setTimeout(() => {
@@ -255,7 +268,7 @@ export class MemoramaComponent implements OnInit {
           this.resultados += this.resultadosCadena[i];
         }, 200 * i);
       }
-    
+
       this.timeout = setTimeout(() => {
         this.mostrarPuntuacion();
       }, 3000);
@@ -263,7 +276,10 @@ export class MemoramaComponent implements OnInit {
   }
 
   mostrarPuntuacion() {
-    if(!this.gameFinished)
+
+    this.mostrarBotonReiniciar = false;
+
+    if (!this.gameFinished)
       return;
 
     // puntajeTotal tiene la puntaucion. Ir sumando de 0 hasta puntajeTotal y reproducir sonido
@@ -271,26 +287,30 @@ export class MemoramaComponent implements OnInit {
     const step = Math.max(1, Math.floor(this.puntajeTotal / 50));
     this.timeout = setInterval(() => {
       if (i <= this.puntajeTotal) {
-      this.playSound(this.tecla);
-      this.puntajeTotalMensaje = i;
-      i += step;
-      } else {
-      this.puntajeTotalMensaje = this.puntajeTotal;
-      clearInterval(this.timeout);
+        this.playSound(this.tecla);
+        this.puntajeTotalMensaje = i;
+        i += step;
+      } else { // redondear al puntaje total, eliminar punto decimal
+
+        this.puntajeTotalMensaje = parseFloat(this.puntajeTotal.toFixed(0));
+
+        clearInterval(this.timeout);
       }
     }, 50);
 
     const timeout1 = setTimeout(() => {
       this.puntajeTotal > 600 ? this.playSound(this.sonidoVictoria) : this.playSound(this.sonidoDerrota);
-    }, this.puntajeTotal * 3 + 500);
-    
+    }, this.puntajeTotal * 2.5 + 500);
+
     const timeout2 = setTimeout(() => {
       console.log('Mostrar mensaje final');
       this.mostrarMensajeFinal();
-    }, this.puntajeTotal * 3 + 2000);
+    }, this.puntajeTotal * 2.5 + 2000);
   }
 
   mostrarMensajeFinal() {
+
+    this.mostrarBotonReiniciar = false;
     let mensajeFinal = '';
     if (this.puntajeTotal >= 1000) {
       mensajeFinal = '¡Increíble!';
@@ -312,6 +332,7 @@ export class MemoramaComponent implements OnInit {
     // Mostrar el botón de reinicio después de terminar el mensaje
     this.timeout = setTimeout(() => {
       this.mostrarBotonReiniciar = true;
+      this.mensajeFinalizado = true;
     }, mensajeFinal.length * 50 + 500);
   }
 
@@ -334,7 +355,10 @@ export class MemoramaComponent implements OnInit {
     this.puntuacion = '';
     this.movimientos = 0;
     this.tiempo = 0;
-
+    this.mostrarBotonReiniciar = false;
+    this.puntajeTotal = 0;
+    this.puntajeTotalMensaje = 0;
+    this.mensajeFinalizado = false;
     this.playSound(this.sonidoPop);
     this.startGame();
   }

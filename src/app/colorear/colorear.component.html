@@ -1,0 +1,29 @@
+<body>
+    <div id="mensaje" class="mensaje" (click)="ocultarMsj()">Mantén presionado un color o da clic derecho en él para modificarlo. El juego aún está en desarrollo, pero puedes probarlo ya. Presiona aquí para ocultar el mensaje.</div>
+    <div class="circle" 
+      [ngStyle]="{
+        'border': '2px solid #fff',
+        'background-color': colorSeleccionado, 
+        'top': positionY + 'px', 
+        'left': positionX + 'px' 
+      }"></div>
+
+    <div class="game-container">
+      <div class="color-picker">
+        <button 
+          *ngFor="let color of colores" 
+          [ngStyle]="{ 'background-color': color }" 
+          (click)="seleccionarColor(color)" 
+          [class.selected]="color === colorSeleccionado"
+          class="color-button">
+        </button>
+      </div>
+  
+      <!-- Contenedor donde se insertará el SVG -->
+      <div class="svg-container" #dibujoContainer></div>
+    </div>
+  
+    <!-- Selector de color oculto -->
+    <input type="color" #colorInput style="display:none; position:absolute;" />
+  </body>
+  

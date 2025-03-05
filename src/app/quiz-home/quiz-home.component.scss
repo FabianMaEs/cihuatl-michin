@@ -108,26 +108,5 @@
       transform: translateY(-50%);
     }
 
-  }
-  
-  #mute {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 300ms ease, background-color 300ms ease;
-  
-    &:hover {
-      background-color: #c82333;
-      transform: scale(1.1);
-    }
-  }
-
-  
+  } 
   

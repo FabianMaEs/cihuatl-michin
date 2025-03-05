@@ -10,25 +10,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AhorcadoComponent implements OnInit {
   frases: string[] = [
-    'ANGULAR ES DIVERTIDO',
-    'PROGRAMAR ES UN ARTE',
-    'EL FUTURO ES HOY',
-    'APRENDER ES CRECER',
-    'DESAFIOS NOS HACEN MEJORES'
+    'CIHUATL MICHIN CUIDA EL AGUA',
+    'LOS RIOS SON VITALES PARA LA VIDA',
+    'EL AGUA ES UN TESORO QUE DEBEMOS CUIDAR',
+    'LA BIODIVERSIDAD ES LA CLAVE PARA UN PLANETA SANO',
+    'PRESERVAR EL MEDIO AMBIENTE ES UNA RESPONSABILIDAD',
+    'EL AGUA ES EL HOGAR DE MUCHOS ANIMALES',
+    'LA CONSERVACION DEL AGUA ES UNA PRIORIDAD',
+    'LAS PLANTAS ACUATICAS MANTIENEN LOS ECOSISTEMAS SANOS',
+    'CUIDAR LOS ECOSISTEMAS NOS BENEFICIA A TODOS',
+    'LOS ECOSISTEMAS SON EL HOGAR DE LA BIODIVERSIDAD',
+    'LA TORTUGA CASQUITO ES UNA ESPECIE VULNERABLE',
+    'LAS ESPECIES INVASORAS AMENAZAN LA BIODIVERSIDAD',
+    'UNIRNOS EN LA PROTECCION DEL AGUA HACE LA DIFERENCIA',
+    'LOS BOSQUES MANTIENEN EL EQUILIBRIO ECOLOGICO',
+    'REFORESTAR AYUDA A LOS ECOSISTEMAS A RECUPERARSE',
+    'LA EDUCACION AMBIENTAL ES CLAVE PARA EL FUTURO',
+    'EL CAMBIO CLIMATICO AFECTA A LOS ECOSISTEMAS LOCALES',
+    'PROTEGER EL MEDIO AMBIENTE ES UN ACTO DE AMOR',
+    'LA CONSERVACION DE LOS RIOS ES FUNDAMENTAL',
+    'LA EDUCACION AMBIENTAL AYUDA A CONSERVAR EL AGUA',
+    'LA BASURA EN LOS RIOS AFECTA A LA VIDA SILVESTRE',
+    'LOS RIOS SON EL HOGAR DE MUCHAS ESPECIES',
+    'LA CONTAMINACION DEL AGUA AFECTA A TODOS',
+    'LAS ESPECIES NATIVAS SON PARTE DE NUESTRA IDENTIDAD',
+    'LA CONSERVACION DE LOS RIOS ES UNA PRIORIDAD',
   ];
+  
 
-  sonidoCorrecto = './../../assets/memorama/sonidos/correcto.mp3';
-  sonidoIncorrecto = './../../assets/memorama/sonidos/incorrecto.mp3';
-  sonidoPop = './../../assets/quiz/sonidos/pop.mp3';
-  sonidoVictoria = './../../assets/quiz/sonidos/victoria.mp3';
-  sonidoDerrota = './../../assets/quiz/sonidos/derrota.mp3';
+  sonidoCorrecto = 'assets/memorama/sonidos/correcto.mp3';
+  sonidoIncorrecto = 'assets/memorama/sonidos/incorrecto.mp3';
+  sonidoPop = 'assets/quiz/sonidos/pop.mp3';
+  sonidoVictoria = 'assets/quiz/sonidos/victoria.mp3';
+  sonidoDerrota = 'assets/quiz/sonidos/derrota.mp3';
 
   fraseOriginal: string = '';
   fraseOculta: string[] = [];
   abecedario: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   letrasUsadas: string[] = [];
-  errores: number = 0;
-  barraProgreso: number = 100;
+  errores: number = 7;
+  barraProgreso: number = 0;
   juegoTerminado: boolean = false;
   victoria: boolean = false;
 
@@ -42,8 +63,8 @@ export class AhorcadoComponent implements OnInit {
       letra === ' ' ? ' ' : '_'
     );
     this.letrasUsadas = [];
-    this.errores = 0;
-    this.barraProgreso = 100;
+    this.errores = 7;
+    this.barraProgreso = 0;
     this.juegoTerminado = false;
     this.victoria = false;
   }
@@ -59,12 +80,15 @@ export class AhorcadoComponent implements OnInit {
         this.juegoTerminado = true;
         this.victoria = true;
       }
+      this.barraProgreso =
+        (this.fraseOculta.filter((letra) => letra !== '_').length /
+          this.fraseOriginal.length) *
+        100;
     } else {
       this.playSound(this.sonidoIncorrecto);
-      this.errores++;
-      this.barraProgreso = Math.max(0, 100 - (this.errores / 7) * 100);
-
-      if (this.errores >= 7) {
+      this.errores--;
+      
+      if (this.errores <= 0) {
         this.playSound(this.sonidoDerrota);
         this.juegoTerminado = true;
       }

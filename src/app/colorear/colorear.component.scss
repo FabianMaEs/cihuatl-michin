@@ -1,0 +1,194 @@
+:root {
+    --w: calc(70vw / 6);
+    --h: calc(70vh / 4);
+    --button-size: 2rem; // tamaño de los botones de color
+  }
+  
+  * {
+    transition: all 0.3s ease-in-out;
+  }
+  .circle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: top 0.05s, left 0.05s;
+    z-index: 1;
+    pointer-events: none; /* Deshabilitar la interacción con el círculo */
+    border-color: #ffffff;
+    border-width: 2px;
+  }
+  
+
+  .mensaje {
+    position: absolute;
+    width: 100%;
+    padding: 1rem;
+    background-color: #f00;
+    color: #fff;
+    font-size: 1.5rem;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background: linear-gradient(135deg, #3e43aa, #8f94fb);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: calibri;
+  }
+  
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+ 
+  .game-container {
+    width: 98vw;
+    height: 90vh;
+    background: linear-gradient(135deg, #3e43aa, #8f94fb);
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    position: relative;
+  }
+  
+  .color-picker {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    grid-template-rows: repeat(10, 40px); /* 8 filas para los botones */
+    gap: 10px; /* Espaciado entre botones */
+    margin: 2rem; /* Espaciado entre el selector y el SVG */
+
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+  
+      &:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      }
+  
+      &.selected {
+        border: 3px solid #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.893);
+        transform: scale(1.2);
+      }
+    }
+  }
+  
+  .svg-container {
+    cursor: none; /* Esto oculta el puntero del mouse */
+    width: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    border: 5px solid #ddd;
+    // No mostrar texto
+    font-size: 0;
+  }
+  
+  .svg-container svg {
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 1024px) {
+    .game-container {
+      width: 98vw;
+      height: 90vh;
+    }
+
+    .color-picker{
+      // Columna
+      flex-direction: row;
+    }
+  
+    .color-picker button {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  
+    .svg-container {
+      width: 70vh;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .svg-container {
+      width: 100%;
+    }
+    
+  
+    .color-picker {
+      gap: 0.5rem;
+    }
+  
+    .color-picker button {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .game-container {
+      width: 100%;
+      height: 90vh;
+      background: linear-gradient(135deg, #3e43aa, #8f94fb);
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+      position: relative;
+    }
+    
+    .color-picker {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr); /* Dos columnas */
+      grid-template-rows: repeat(2, 40px); /* 8 filas para los botones */
+      gap: 10px; /* Espaciado entre botones */
+      margin: 2rem; /* Espaciado entre el selector y el SVG */
+    }
+  }
+  @media (max-width: 500px) {
+    .color-picker {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr); /* Dos columnas */
+      grid-template-rows: repeat(3, 40px); /* 8 filas para los botones */
+      gap: 10px; /* Espaciado entre botones */
+      margin: 2rem; /* Espaciado entre el selector y el SVG */
+    }
+  }
+  

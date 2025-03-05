@@ -49,9 +49,8 @@
           <br>
           <span>{{ mensajeFinal }} </span>
           <br>
-          <span *ngIf="this.mensajeFinalizado" [@fade]>
+          <span *ngIf="mensajeFinalizado && mostrarBotonReiniciar" [@fade]>
             <button class="nuevo-juego" (click)="reiniciarJuego()">Nuevo Juego</button>
-
           </span>
         </p>
       </div>
@@ -59,7 +58,6 @@
 
     <!-- Botón de reinicio -->
     <button class="nuevo-juego" (click)="reiniciarJuego()">Nuevo Juego</button>
-    <button (click)="mostrarResultados(true, 1017)">Ganar</button>
     <br><br>
 
   </div>

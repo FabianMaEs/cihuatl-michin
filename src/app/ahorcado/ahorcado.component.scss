@@ -27,6 +27,25 @@
     }
   }
 
+  .intentos-header {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    position: sticky;
+    top: 0;
+    right: 0;
+    margin-left: auto; /* Obliga al elemento a alinearse a la derecha */
+    text-align: right; /* Opcional, para alinear el contenido al lado derecho */
+    width: auto; /* Asegúrate de que no se extienda por completo */
+    padding-right: 2rem; /* Añade un poco de espacio a la derecha */
+    padding-top: 2rem; /* Añade un poco de espacio arriba */
+    z-index: 1; /* Asegura que esté por encima del tablero */
+    .info {
+      text-shadow: #153e96 2px 2px 4px;
+    }
+  }
+
   
   /* Contenedor principal */
   .ahorcado-container {
