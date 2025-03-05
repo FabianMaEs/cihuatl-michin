@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './cuerpos-de-agua.component.html',
-  styleUrl: './cuerpos-de-agua.component.css'
+  styleUrl: './cuerpos-de-agua.component.scss'
 })
 export class CuerposDeAguaComponent {
 

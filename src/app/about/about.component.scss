@@ -20,6 +20,10 @@ header {
 
   .btn {
     background-color: $anzac;
+    padding: 10px 20px;
+    margin-left: .5rem;
+    margin-top: 1rem;
+    margin-left: 0.5ewm;
     border: none;
     &:hover {
       background-color: darken($anzac, 10%);
@@ -112,6 +116,13 @@ header {
       height: 140vh;
     }
   } 
+  #about-us {
+    img {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
 }
 @media screen and (max-width: 992px) {
   .parallax {
@@ -190,6 +201,9 @@ section {
   }
 
   img {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }

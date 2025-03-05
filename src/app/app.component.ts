@@ -16,12 +16,6 @@ import { animate, style, transition, trigger } from '@angular/animations';
         style({ filter: 'blur(10px)', opacity: 0 }),
         animate('400ms ease-in-out', style({ filter: 'blur(0px)', opacity: 1 }))
       ])
-      
-      
-      
-      
-      
-      
     ])
   ]
 })

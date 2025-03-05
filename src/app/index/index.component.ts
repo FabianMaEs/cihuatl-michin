@@ -1,4 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import anime from'animejs';
 
 @Component({
@@ -9,6 +10,7 @@ import anime from'animejs';
   styleUrl: './index.component.scss'
 })
 export class IndexComponent implements OnInit, AfterViewInit {
+  constructor(private router: Router) {}
   
   ngAfterViewInit(): void {
     // Seleccionar todos los elementos con la clase "hidden"
@@ -31,9 +33,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
         threshold: 0.2, // 20% del elemento debe estar visible para activar la animación
       }
     );
-
     // Observar cada elemento
-    hiddenElements.forEach((el) => observer.observe(el));
+    hiddenElements.forEach((el) => observer.observe(el));      
+  }
+
+  goTo(url: string) {
+    this.router.navigate([url]);
   }
 
   wave1 = "M0 108.306L50 114.323C100 120.34 200 132.374 300 168.476C400 204.578 500 264.749 600 246.698C700 228.647 800 132.374 900 108.306C1000 84.2382 1100 132.374 1150 156.442L1200 180.51V0H1150C1100 0 1000 0 900 0C800 0 700 0 600 0C500 0 400 0 300 0C200 0 100 0 50 0H0V108.306Z";
@@ -46,7 +51,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     anime({
       targets: '.wave-bottom > path',
       easing: 'linear',
-      duration: 20000,
+      duration: 30000,
       loop: true,
       d: [
         { value: [this.wave1, this.wave2] },

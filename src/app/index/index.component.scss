@@ -6,11 +6,28 @@
   background-image: url("./../../assets/foto1.jpg"); /* Ruta de tu imagen */
   background-size: 200%; /* Tamaño del fondo para que se desplace */
   background-repeat: no-repeat;
-  -webkit-animation: bg-pan-br 15s both;
-  animation: bg-pan-br 15s both;
+  -webkit-animation: bg-pan-br 20s both;
+  animation: bg-pan-br 20s both;
   border-radius: 15px;
   z-index: 0;
 }
+
+.btn {
+  background-color: $blue-chill;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: darken($blue-chill, 10%);
+    color: white;
+  }
+}
+
 
 .slide-in-left {
 	animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -87,11 +104,9 @@ img.focus-in-expand {
   max-width: 35rem;
 }
 
-
-
 .arriba {
   z-index: 5;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Fuentes */
@@ -106,7 +121,7 @@ body {
 /* Header */
 header {
   height: 100vh;
-  position: relative; /* Para que el pseudo-elemento se posicione dentro */
+  position: relative;
   display: flex;
   align-items: center;
   color: #fff;

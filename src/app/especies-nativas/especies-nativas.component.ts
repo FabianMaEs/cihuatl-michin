@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './especies-nativas.component.html',
-  styleUrl: './especies-nativas.component.css'
+  styleUrl: './especies-nativas.component.scss'
 })
 export class EspeciesNativasComponent {
 

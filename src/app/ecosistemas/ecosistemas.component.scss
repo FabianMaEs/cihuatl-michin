@@ -1,0 +1,192 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.introduccion {
+    background: linear-gradient(135deg, #f0f1f6, #e5e6eb);  // Fondo suave de gradiente
+    padding: 2rem;  // Espaciado interior
+    border-radius: 10px;  // Bordes redondeados
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  // Sombra suave
+    margin-bottom: 3rem;  // Margen inferior para separar de otros elementos
+    
+    .section-title {
+      font-size: 2rem;  // Tamaño del título
+      font-weight: 600;  // Peso del texto en negrita
+      color: #2d3b45;  // Color del texto del título
+      margin-bottom: 1.5rem;  // Espacio entre el título y el párrafo
+      text-align: center;  // Alineación centrada del título
+      text-transform: uppercase;  // Convertir título a mayúsculas
+      letter-spacing: 1px;  // Espaciado entre letras
+    }
+  
+    p {
+      font-size: 1.1rem;  // Tamaño del texto
+      line-height: 1.6;  // Altura de línea para mejor legibilidad
+      color: #4f5b66;  // Color de texto
+      text-align: justify;  // Alineación justificada
+      max-width: 800px;  // Ancho máximo para evitar que la línea sea demasiado larga
+      margin: 0 auto;  // Centrado de párrafo
+    }
+  }
+
+  .general {
+    background: linear-gradient(135deg, #edf7ed, #d7ead8); // Fondo verde claro degradado
+    padding: 2rem; // Espaciado interno
+    border-radius: 10px; // Bordes redondeados para suavizar el diseño
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Sombra suave para dar profundidad
+    margin-bottom: 3rem; // Espacio inferior para separación
+  
+    .section-title {
+      font-size: 2rem; // Tamaño del título
+      font-weight: bold; // Título destacado
+      color: #275d27; // Color verde oscuro para reflejar naturaleza
+      text-align: center; // Alineación centrada
+      text-transform: uppercase; // Título en mayúsculas
+      letter-spacing: 1px; // Espaciado entre letras para claridad
+      margin-bottom: 1.5rem; // Separación con el párrafo
+    }
+  
+    p {
+      font-size: 1.1rem; // Tamaño del texto del párrafo
+      line-height: 1.8; // Espaciado entre líneas para mejor legibilidad
+      color: #3e4a3e; // Color gris verdoso para contraste
+      text-align: justify; // Alineación justificada para limpieza visual
+      max-width: 800px; // Ancho máximo del texto
+      margin: 0 auto; // Centrar el contenido
+    }
+  }
+
+  
+.parallax {
+  
+    color: white; /* Asegura el contraste */
+  
+    /* Sección específica del header */
+    .hero {
+        
+        display: flex;
+        align-items: center; /* Centra el contenido verticalmente */
+        text-align: center;
+        padding: 5rem 2rem;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+        p {
+            font-size: 1.3rem;
+        }
+        height: 100vh; /* Altura de la sección */
+        background: linear-gradient(to bottom, rgba(21, 62, 150, 0.5), rgba(34, 130, 141, 1)), 
+        url('./../../assets/ecosistema1.jpg') no-repeat center;
+        background-size: cover; /* Asegura que la imagen cubra toda la sección */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita repeticiones */
+        background-attachment: fixed; /* Efecto parallax */
+    }
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: #27ae60;
+}
+
+
+.arida {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgb(192, 144, 102)), 
+      url('./../../assets/info/CerroJuanGrande-Llano-Arido.jpg') no-repeat center;
+    background-size: cover;
+    border-left: 5px solid rgb(161, 125, 93); // Cambio sutil en el color
+}
+
+.templada {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(0deg, rgba(211, 233, 209,0.5), rgb(76, 117, 78)),
+      url('./../../assets/info/SierraElLaurel-Calvillo-Templado.jpg') no-repeat center;
+    background-size: cover;
+    
+    border-left: 5px solid #539357; // Cambio sutil en el color
+  }
+  .tropical {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(0deg, rgba(115, 162, 125, 0.5), #81c784),
+      url('./../../assets/info/SierraFria-Tropical.jpeg') no-repeat center;
+    background-size: cover;
+    
+    border-left: 5px solid #2a722e; // Cambio sutil en el color
+}
+
+/* Estado inicial: Oculto */
+.hidden {
+  filter: grayscale(100%);
+  transform: translateY(20px);
+  transition: filter 3s ease-out, transform .5s ease-out;
+}
+
+/* Animación de entrada: Fade-In */
+.fade-in {
+  filter: grayscale(0%);
+  transform: translateY(0);
+}
+
+
+
+.ecosistemas {
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .tarjeta {
+        height: 80vh;
+    }
+  
+    .card {
+      height: 100%;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 10;
+      color: black;
+      
+      font-size: 1.3rem;
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+  
+      .card-body {
+        padding: 1.5rem;
+      }
+  
+      h3 {
+        font-size: 1.9rem;
+        display: flex;
+        align-items: center;
+        color: white;
+        .icon {
+          font-size: 2rem;
+          margin-right: 1rem;
+        }
+      }
+  
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: white;
+        text-align: justify;
+      }
+    }
+  }
+  

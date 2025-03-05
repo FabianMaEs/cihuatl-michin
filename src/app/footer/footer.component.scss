@@ -1,3 +1,4 @@
+
 footer {
     grid-row: 2;
     width: 100%;
@@ -8,7 +9,7 @@ footer {
     margin-top: 20px;
   
     .credits-btn {
-      background-color: #007bff;
+      background-color: #0da4a3;
       color: #fff;
       border: none;
       padding: 8px 16px;
@@ -16,9 +17,13 @@ footer {
       cursor: pointer;
   
       &:hover {
-        background-color: #0056b3;
+        background-color: darken($color: #0da4a3, $amount: 10%)
       }
     }
+
+  .credits-btn:active {
+    background-color: #004085;
+  }
   
     .credits {
       font-size: 0.8rem;
