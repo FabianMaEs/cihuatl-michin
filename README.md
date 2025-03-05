@@ -1,5 +1,10 @@
 # Cihuatl Michin - Conservación y Educación Ambiental
 
+## Enlace al sitio en producción
+
+Puedes ver la versión en funcionamiento en:
+[https://fabianmaes.github.io/cihuatl-michin/index](https://fabianmaes.github.io/cihuatl-michin/index)
+
 ## Descripción
 
 Cihuatl Michin es un proyecto dedicado a la conservación de los cuerpos de agua en Aguascalientes y a la educación ambiental mediante el arte. Nuestro objetivo es generar conciencia sobre la importancia de los ecosistemas acuáticos y la preservación de las especies nativas.
@@ -29,11 +34,5 @@ Cihuatl Michin es un proyecto dedicado a la conservación de los cuerpos de agua
    ng serve
    ```
 5. Abre [http://localhost:4200](http://localhost:4200) en tu navegador para visualizar el proyecto en ejecución.
-
-
-## Enlace al sitio en producción
-
-Puedes ver la versión en funcionamiento en:
-[https://fabianmaes.github.io/cihuatl-michin/index](https://fabianmaes.github.io/cihuatl-michin/index)
 
 
