@@ -50,8 +50,8 @@ export class MemoramaComponent implements OnInit {
   selecciones: number[] = [];
   tiempo: any;
   movimientos: any;
-  mostrarTarjetas: boolean = false;
-  mostrarBotonReiniciar: boolean = false
+  mostrarTarjetas = false;
+  mostrarBotonReiniciar = false
   timeout: any;
 
   sonidoHoja = 'assets/quiz/sonidos/woosh.mp3';
@@ -63,17 +63,17 @@ export class MemoramaComponent implements OnInit {
   sonidoIniciarTimer = 'assets/quiz/sonidos/beeps.mp3';
   tecla = 'assets/quiz/sonidos/tecla.mp3';
   countdownFinished = false;
-  gameFinished: boolean = false;
+  gameFinished = false;
 
-  score: number = 0;
+  score = 0;
   resultadosCadena = "RESULTADOS";
-  resultados: string = "";
+  resultados = "";
   puntuacionCadena = ""
-  puntuacion: string = "";
-  mensajeFinal: string = "";
+  puntuacion = "";
+  mensajeFinal = "";
   countdown: number | null = 3;
-  puntajeTotal: number = 0;
-  puntajeTotalMensaje: number = 0;
+  puntajeTotal = 0;
+  puntajeTotalMensaje = 0;
   mensajeFinalizado = false;
 
   // Mensaje aleatorio de "¡YA!", "¡LISTO!", "¡VAMOS!", etc.
@@ -133,7 +133,7 @@ export class MemoramaComponent implements OnInit {
 
   private iconos: { img: string; text: string }[] = [];
   
-  cargarIconos(numeroDeParejas: number = 6) {
+  cargarIconos(numeroDeParejas = 6) {
     const assets = 'assets/memorama/';
     const iconos = [
       { img: assets + 'ducha.jpeg', text: 'Bañarse en 5 minutos' },

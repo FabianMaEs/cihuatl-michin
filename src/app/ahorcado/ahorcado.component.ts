@@ -44,14 +44,14 @@ export class AhorcadoComponent implements OnInit {
   sonidoVictoria = 'assets/quiz/sonidos/victoria.mp3';
   sonidoDerrota = 'assets/quiz/sonidos/derrota.mp3';
 
-  fraseOriginal: string = '';
+  fraseOriginal = '';
   fraseOculta: string[] = [];
   abecedario: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   letrasUsadas: string[] = [];
-  errores: number = 7;
-  barraProgreso: number = 0;
-  juegoTerminado: boolean = false;
-  victoria: boolean = false;
+  errores = 7;
+  barraProgreso = 0;
+  juegoTerminado = false;
+  victoria = false;
 
   ngOnInit() {
     this.iniciarJuego();

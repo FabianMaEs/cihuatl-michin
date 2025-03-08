@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class ColorearComponent implements OnInit {
-  colorSeleccionado: string = '#1D6D79'; // Color predeterminado
+  colorSeleccionado = '#1D6D79'; // Color predeterminado
   colores: string[] = [
     '#1D6D79',
     '#4FB1B1',
@@ -56,8 +56,8 @@ export class ColorearComponent implements OnInit {
       });
   }
 
-  positionX: number = 0;
-  positionY: number = 0;
+  positionX = 0;
+  positionY = 0;
 
   // Capturar el movimiento del mouse
   @HostListener('mousemove', ['$event'])
@@ -107,7 +107,7 @@ export class ColorearComponent implements OnInit {
     }
   }
 
-  touchStartTime: number = 0;
+  touchStartTime = 0;
   touchTimeout: any;
 
   // Detectar toque largo en los botones de color
