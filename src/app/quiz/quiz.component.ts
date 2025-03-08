@@ -204,10 +204,10 @@ export class QuizComponent implements OnInit {
     Math.floor(Math.random() * 5)
   ];
   resultadosCadena = 'RESULTADOS';
-  resultados: string = '';
+  resultados = '';
   puntuacionCadena = 'Tu puntuación es ';
-  puntuacion: string = '';
-  mensajeFinal: string = '';
+  puntuacion = '';
+  mensajeFinal = '';
 
   // Variables para el fondo y efectos
   backgroundState: 'correct' | 'incorrect' | 'neutral' = 'neutral';
