@@ -2,6 +2,7 @@ import { animate, query, stagger, state, style, transition, trigger } from '@ang
 import { CommonModule, SlicePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { log } from '../logger';
 
 @Component({
   selector: 'app-memorama',
@@ -164,7 +165,7 @@ export class MemoramaComponent implements OnInit {
 
   generarTablero() {
     const iconosCargados = this.cargarIconos(6);
-    console.log(iconosCargados)
+    // log(iconosCargados)
     this.tarjetas = [];
 
     iconosCargados.forEach((icono) => {
@@ -303,7 +304,6 @@ export class MemoramaComponent implements OnInit {
     }, this.puntajeTotal * 2.5 + 500);
 
     const timeout2 = setTimeout(() => {
-      console.log('Mostrar mensaje final');
       this.mostrarMensajeFinal();
     }, this.puntajeTotal * 2.5 + 2000);
   }
@@ -321,7 +321,6 @@ export class MemoramaComponent implements OnInit {
     } else {
       mensajeFinal = '¡Sigue intentando!';
     }
-    console.log(mensajeFinal);
     // Mostrar el mensaje final letra por letra
     for (let i = 0; i < mensajeFinal.length; i++) {
       this.timeout = setTimeout(() => {
