@@ -8,23 +8,23 @@ export class AlertService {
 
   constructor() { }
 
-  success(message: string, title: string = 'Éxito') {
+  success(message: string, title = 'Éxito') {
     Swal.fire(title, message, 'success');
   }
 
-  error(message: string, title: string = 'Error') {
+  error(message: string, title = 'Error') {
     Swal.fire(title, message, 'error');
   }
 
-  info(message: string, title: string = 'Información') {
+  info(message: string, title = 'Información') {
     Swal.fire(title, message, 'info');
   }
 
-  warning(message: string, title: string = 'Advertencia') {
+  warning(message: string, title = 'Advertencia') {
     Swal.fire(title, message, 'warning');
   }
 
-  confirm(message: string, title: string = '¿Estás seguro?') {
+  confirm(message: string, title = '¿Estás seguro?') {
     return Swal.fire({
       title,
       text: message,
@@ -35,7 +35,7 @@ export class AlertService {
     });
   }
   
-  toast(message: string, title: string = 'Éxito', icon: 'success' | 'error' | 'warning' | 'info' = 'success') {
+  toast(message: string, title = 'Éxito', icon: 'success' | 'error' | 'warning' | 'info' = 'success') {
     Swal.fire({
       toast: true,
       position: 'top-start',

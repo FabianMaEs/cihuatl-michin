@@ -64,8 +64,8 @@ export class BlogsComponent {
   autores: any[] = [];
   tags: any[] = [];
   blogSeleccionado: any;
-  markdown: string = '';
-  errorMessagePred: string = 'Ha ocurrido un error al cargar los datos... Intenta de nuevo en un momento';
+  markdown = '';
+  errorMessagePred = 'Ha ocurrido un error al cargar los datos... Intenta de nuevo en un momento';
   errorMessage: string = this.errorMessagePred;
   buscar() {
     throw new Error('Method not implemented.');
