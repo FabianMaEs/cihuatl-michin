@@ -16,8 +16,8 @@ import { log } from '../logger';
 export class ComoAyudarComponent {
 
   contactForm: FormGroup;
-  maxSubjectLength: number = 60; // Número máximo de caracteres permitidos
-  maxMessageLength: number = 200; // Número máximo de caracteres permitidos
+  maxSubjectLength = 60; // Número máximo de caracteres permitidos
+  maxMessageLength = 200; // Número máximo de caracteres permitidos
 
   subjectRemainingCharacters: number = this.maxSubjectLength; // Número máximo de caracteres permitidos
   messageRemainingCharacters: number = this.maxMessageLength; // Número máximo de caracteres permitidos
