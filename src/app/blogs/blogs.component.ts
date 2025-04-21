@@ -7,6 +7,7 @@ import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { AlertService } from '../alert.service';
 import { log } from '../logger';
+import { BlogPreview, Blog, Author, Tag } from './blog.interface';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { log } from '../logger';
   styleUrls: ['./blogs.component.scss',],
 })
 export class BlogsComponent {
+  
 
   options: AnimationOptions = {
     path: '/assets/icons/icons8-me-gusta.json',
@@ -49,21 +51,19 @@ export class BlogsComponent {
     }, this.playDuration);
   }
 
-
-
   infoTagsObtenida = false;
   infoAutoresObtenida = false;
   infoBlogObtenida = false;
   likedBlog = false; // Variable para controlar el like
   view = 'todos'; // Variable para controlar el switch
   specificSearch = false; // Variable para controlar el switch
-  searchArray: any[] = []; // Variable para controlar el input de búsqueda
-  blogs: any[] = [];
-  todosLosBlogs: any[] = []; // Lista de blogs originales
-  blogsCopy: any[] = []; // Copia de los blogs para restaurar después de filtrar
-  autores: any[] = [];
-  tags: any[] = [];
-  blogSeleccionado: any;
+  searchArray: string[] = []; // Variable para controlar el input de búsqueda
+  blogs: BlogPreview[] = []; // Lista de blogs
+  todosLosBlogs: BlogPreview[] = []; // Lista de blogs originales
+  blogsCopy: BlogPreview[] = []; // Copia de los blogs para restaurar después de filtrar
+  autores: Author[] = []; // Cambiado a Author[]
+  tags: Tag[] = [];
+  blogSeleccionado: Blog | null = null;
   markdown: string = '';
   errorMessagePred: string = 'Ha ocurrido un error al cargar los datos... Intenta de nuevo en un momento';
   errorMessage: string = this.errorMessagePred;
@@ -95,6 +95,7 @@ export class BlogsComponent {
         .then(data => {
           this.autores = data;
           this.infoAutoresObtenida = true;
+          log('Autores obtenidos: ', this.autores);
         })
         .catch(() => {
           this.autores = [];
@@ -111,6 +112,7 @@ export class BlogsComponent {
       .then(data => {
         this.tags = data;
         this.infoTagsObtenida = true;
+        log('Tags obtenidos: ', this.tags);
       })
       .catch(() => {
         this.tags = [];
@@ -125,11 +127,14 @@ export class BlogsComponent {
     this.blogSeleccionado = null;
     this.view = 'detalle';
     this.blogSeleccionado = await this.blogService.getBlog(id);
-    this.markdown = this.blogSeleccionado.contenido;
-    const blog = this.blogs.find(b => b._id === this.blogSeleccionado._id);
+    this.markdown = this.blogSeleccionado ? this.blogSeleccionado.content : '';
+    log('Blog seleccionado: ', this.blogSeleccionado);
+    const blog = this.blogSeleccionado && this.blogSeleccionado._id 
+    ? this.blogs.find(b => b._id === this.blogSeleccionado!._id) 
+    : null;
     if (blog) {
-      blog.views = this.blogSeleccionado.views
-      blog.likes = this.blogSeleccionado.likes
+      blog.views = this.blogSeleccionado?.views ?? blog.views;
+      blog.likes = this.blogSeleccionado?.likes ?? blog.likes;
     } else {
       this.eliminarFiltros();
     }
@@ -141,9 +146,9 @@ export class BlogsComponent {
     this.likedBlog = !this.likedBlog; // Cambia el estado del like
     try {
       this.blogSeleccionado = await this.blogService.like(id, this.likedBlog);
-      const blog = this.blogs.find(b => b._id === this.blogSeleccionado._id);
+      const blog = this.blogSeleccionado ? this.blogs.find(b => b._id === this.blogSeleccionado?._id) ?? null : null;
       if (blog) {
-        blog.likes = this.blogSeleccionado.likes;
+        blog.likes = this.blogSeleccionado?.likes ?? blog.likes;
       }
     } catch (error) {
       this.alertService.error("Error al dar like al blog", "Error"); // Muestra un mensaje de error
@@ -160,18 +165,17 @@ export class BlogsComponent {
     }
   }
 
-  blogs_filtered: any[] = []
-  autorSeleccionado: any = null;
+  blogs_filtered: BlogPreview[] = []
 
   filtrarBlogs() {
     log("Search: ", this.searchArray)
     log("Todos los blogs: ", this.todosLosBlogs)
-    log("Blogs filtrados: ", this.blogs_filtered)
     this.blogs_filtered = this.todosLosBlogs.filter(blog =>
       this.searchArray.every(filter =>
         blog.tags.includes(filter) || blog.author.name === filter
       )
     );
+    log("Blogs filtrados: ", this.blogs_filtered)
     this.errorMessage = this.blogs_filtered.length === 0 ? 'No se encontraron blogs que coincidan con los filtros.' : this.blogs_filtered.toString();
     log("Filter: ",this.blogs_filtered)
     this.blogs = this.blogs_filtered;
@@ -220,6 +224,7 @@ export class BlogsComponent {
           this.blogs = data;
           this.todosLosBlogs = data; // Guardar la lista original de blogs
           this.infoBlogObtenida = true;
+          log('Blogs obtenidos: ', this.blogs);
         })
         .catch(() => {
           // console.error('Error al obtener blogs componente');
