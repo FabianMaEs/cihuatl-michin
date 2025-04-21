@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { QuizComponent } from '../quiz/quiz.component';
 import { CommonModule } from '@angular/common';

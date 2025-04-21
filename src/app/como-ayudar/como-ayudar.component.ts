@@ -88,6 +88,7 @@ export class ComoAyudarComponent {
         this.messageRemainingCharacters = this.maxMessageLength; // Reinicia el contador de caracteres
       }).catch(error => {
         this.alertService.error("Error al enviar el mensaje. Intenta de nuevo más tarde.", "Error"); // Muestra un mensaje de error
+        console.log(error);
       });
     } else {
       this.alertService.toast("Por favor, completa todos los campos requeridos", "Advertencia", "warning"); // Muestra un mensaje de advertencia

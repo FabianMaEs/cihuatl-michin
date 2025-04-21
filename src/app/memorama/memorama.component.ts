@@ -1,8 +1,7 @@
 import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
-import { CommonModule, SlicePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { log } from '../logger';
 
 @Component({
   selector: 'app-memorama',
@@ -299,11 +298,11 @@ export class MemoramaComponent implements OnInit {
       }
     }, 50);
 
-    const timeout1 = setTimeout(() => {
+    setTimeout(() => {
       this.puntajeTotal > 600 ? this.playSound(this.sonidoVictoria) : this.playSound(this.sonidoDerrota);
     }, this.puntajeTotal * 2.5 + 500);
 
-    const timeout2 = setTimeout(() => {
+    setTimeout(() => {
       this.mostrarMensajeFinal();
     }, this.puntajeTotal * 2.5 + 2000);
   }

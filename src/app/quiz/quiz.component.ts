@@ -262,7 +262,7 @@ export class QuizComponent implements OnInit {
         this.backgroundState = 'incorrect';
         this.timerSound.pause();
         this.playSound(this.sonidoIncorrecto);
-        this.nextQuestion(false);
+        this.nextQuestion();
       }
     }, 1000);
   }
@@ -287,13 +287,11 @@ export class QuizComponent implements OnInit {
     }
 
     this.timeout = setTimeout(() => {
-      this.nextQuestion(
-        index === this.questions[this.currentQuestionIndex].correct
-      );
+      this.nextQuestion();
     }, 1000);
   }
 
-  nextQuestion(correct: boolean) {
+  nextQuestion() {
     this.playSound(this.sonidoWoosh);
     this.selectedAnswer = null;
     this.backgroundState = 'neutral'; // Resetear fondo
