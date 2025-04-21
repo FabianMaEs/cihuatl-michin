@@ -15,28 +15,28 @@ export class BlogsService {
 
   async getBlogsPreview() {
     log('Obteniendo blogs (service)...');
-    const response = await fetch(this.serverUrl + '/blogs_preview');
+    const response = await fetch(`${this.serverUrl}/blogs_preview`);
     if (!response.ok) throw new Error('Error al obtener blogs service');
     return await response.json();
   }
   
   async getTags() {
     log('Obteniendo tags (service)...');
-    const response = await fetch(this.serverUrl + '/tags');
+    const response = await fetch(`${this.serverUrl}/tags`);
     if (!response.ok) throw new Error('Error al obtener tags');
     return await response.json();
   }
 
   async getAuthors() {
     log('Obteniendo autores (service)...');
-    const response = await fetch(this.serverUrl + '/authors');
+    const response = await fetch(`${this.serverUrl}/authors`);
     if (!response.ok) throw new Error('Error al obtener autores');
     return await response.json();
   }
   
   async getBlog(id: string) {
     log('Obteniendo blog (service)...');
-    const response = await fetch(this.serverUrl + '/blog/' + id);
+    const response = await fetch(`${this.serverUrl}/blog/${id}`);
     if (!response.ok) throw new Error('Error al obtener blog');
     // log('Blog obtenido (service): ', await response.clone().json());
     return await response.json();
@@ -44,7 +44,7 @@ export class BlogsService {
 
   async getBlogsByAuthor(author_name: string) {
     log('Obteniendo blogs por autor (service)...');
-    const response = await fetch(this.serverUrl + '/blogs/author/' + author_name);
+    const response = await fetch(`${this.serverUrl}/blogs/author/${author_name}`);
     if (!response.ok) throw new Error('Error al obtener blogs por autor');
     log('Blogs obtenidos + autor (service): ', await response.clone().json());
     return await response.json();
