@@ -89,21 +89,41 @@
             <div class="col-md-6" id="contacto">
                 <h3>Contáctanos</h3>
                 <p>¿Tienes preguntas o quieres más información? Escríbenos y con gusto te ayudaremos.</p>
-                <form>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" placeholder="Tu nombre">
+                
+                <form class="form-floating" [formGroup]="contactForm" (ngSubmit)="sendMessage($event)">
+  
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="name" formControlName="name" maxlength="50" placeholder="Tu nombre">
+                      <label for="name">Nombre</label>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" placeholder="Tu correo">
+                  
+                    <div class="form-floating mb-3">
+                      <input type="email" id="emailInput" class="form-control" [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" formControlName="email" maxlength="100" placeholder="Tu correo">
+                      <label for="email" class="">Correo Electrónico</label>
+                      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-danger mt-1">
+                        Correo electrónico inválido.
+                      </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Mensaje</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="Escribe tu mensaje"></textarea>
+                  
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="subject" formControlName="subject" maxlength="60" (input)="updateCharacterCount($event, 'subject')" placeholder="Asunto de tu mensaje">
+                      <label for="subject">Asunto</label>
+                      <small class="text-muted ms-2">{{ subjectRemainingCharacters }} caracteres restantes</small>
                     </div>
+                  
+                    <div class="form-floating mb-3">
+                      <textarea class="form-control" id="messageInput" [class.is-invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" formControlName="message" rows="3" maxlength="200" placeholder="Escribe tu mensaje" (input)="updateCharacterCount($event, 'message')"></textarea>
+                      <label for="message">Mensaje</label>
+                      <small class="text-muted ms-2">{{ messageRemainingCharacters }} caracteres restantes</small>
+                      <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="text-danger mt-1">
+                        El mensaje es obligatorio.
+                      </div>
+                    </div>
+                  
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
+                  </form>
+                  
+                  
             </div>
             <div class="col-md-6">
                 <h3>Síguenos en Redes Sociales</h3>
