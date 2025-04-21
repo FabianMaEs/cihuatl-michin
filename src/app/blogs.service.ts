@@ -50,7 +50,7 @@ export class BlogsService {
     return await response.json();
   }
 
-  async like(id: string, like: boolean = true) {
+  async like(id: string, like = true) {
     log('Dando like (service)...');
     const response = await fetch(`${this.serverUrl}/like/${id}/${like}`, {
       method: 'POST',
