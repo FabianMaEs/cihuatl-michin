@@ -4,6 +4,7 @@
 *.mp4
 
 # Compiled output
+/project
 /dist
 /tmp
 /out-tsc

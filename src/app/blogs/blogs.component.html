@@ -131,7 +131,7 @@
 <ng-template #error>
   <div class="error">
     <h3>{{ errorMessage }}</h3>
-    <div *ngIf="blogs_filtered.length === 0" >
+    <div *ngIf="blogs_filtered.length === 0 && blogs.length > 0 ">
       <button class="btn btn-danger" (click)="eliminarFiltros()" title="Eliminar todos los filtros">Eliminar todos los filtros</button>
     </div>
   </div>
