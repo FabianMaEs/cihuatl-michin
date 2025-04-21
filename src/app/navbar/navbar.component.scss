@@ -1,3 +1,5 @@
+@import "./../styles/colores.scss";
+
 .logo {
     background-color: aliceblue;
     border-radius: 50%;
@@ -5,13 +7,6 @@
     height: 50px;
     margin-right: 10px;
 }
-// Colores de tu paleta
-$black-pearl: #102d6c;
-$blue-chill: #0da4a3;
-$anzac: #deb04d;
-$william: #366b66;
-$elm: #22828d;
-
 // Sobrescribiendo clases de Bootstrap
 .navbar {
   background-color: $black-pearl !important; // Fondo del navbar
@@ -73,4 +68,12 @@ $elm: #22828d;
     max-height: 50px;
     margin-right: 10px;
   }
+}
+
+.icon-bar {
+  width: 22px;
+  height: 2px;
+  background: $black-pearl;
+  margin: 5px;
+  position: relative;
 }

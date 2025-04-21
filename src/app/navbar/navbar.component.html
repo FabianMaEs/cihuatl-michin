@@ -2,7 +2,13 @@
     <div class="container px-5">
         <a routerLink="/"><img src="assets/logo.png" alt="Logo" class="logo"></a>
         <a class="navbar-brand" routerLink="/">Cihuatl Michin</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        
+        <div (click)="onClick()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="icon-bar" [@hamburguerX]="isHamburguer ? 'hamburguer' : 'topX'"></div>
+            <div class="icon-bar" [@hamburguerX]="isHamburguer ? 'hamburguer' : 'hide'"></div>
+            <div class="icon-bar" [@hamburguerX]="isHamburguer ? 'hamburguer' : 'bottomX'"></div>
+        </div>
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a
@@ -22,6 +28,7 @@
                         <li><a class="dropdown-item" routerLink="/especies-nativas" routerLinkActive="active">Nuestras especies nativas</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/como-ayudar" routerLinkActive="active">Cómo Ayudar</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Juegos</a>
