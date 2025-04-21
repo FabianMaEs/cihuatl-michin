@@ -47,7 +47,6 @@ export class IndexComponent implements OnInit, AfterViewInit {
   wave4 = "M0 125L50 111.111C100 97.2222 200 69.4444 300 97.2222C400 125 500 208.333 600 236.111C700 263.889 800 236.111 900 229.167C1000 222.222 1100 236.111 1150 243.056L1200 250V0H1150C1100 0 1000 0 900 0C800 0 700 0 600 0C500 0 400 0 300 0C200 0 100 0 50 0H0V125Z";
 
   ngOnInit(): void {
-    console.log('Hello World!');
     anime({
       targets: '.wave-bottom > path',
       easing: 'linear',

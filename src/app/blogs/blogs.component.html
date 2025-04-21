@@ -1,0 +1,138 @@
+<div class="container top">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="verTodo nav-link">
+        <h4 (click)="mostrarTodos()" [class.active]="view === 'todos'">Todos los artículos</h4>
+        <h4 (click)="mostrarAutores()" [class.active]="view === 'autores'">Todos los autores</h4> 
+        <h4 (click)="mostrarTags()" [class.active]="view === 'tags'">Todas las etiquetas</h4>
+      </div>
+      <div class="verDetalle blog" *ngIf="specificSearch">
+        <div class="left" *ngFor="let element of searchArray">
+          <button class="btn tag" (click)="eliminarFiltro(element)" title="Eliminar filtro"> {{ element }} </button>
+        </div>
+        <div class="right">
+          <button class="btn btn-danger" (click)="eliminarFiltros()" title="Eliminar todos los filtros">X</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div [ngSwitch]="view" class="container">
+  
+  <!-- Mostrar la previsualización de los artículos, autores y etiquetas según la vista seleccionada -->
+  <div *ngSwitchCase="'todos'" class="row">
+    <div class="col-md-12">
+      <!-- Mostrar "loading" primero y luego mostrar los datos o el error -->
+      <div *ngIf="infoBlogObtenida; else loading">
+        <div *ngIf="blogs.length >= 1; else error">
+          <div *ngFor="let blog of blogs" class="blog">
+            <h2 class="title" (click)="mostrarBlog(blog._id)">{{ blog.title }}</h2>
+            <p class="py-2">Por <span class="author" (click)="mostrarAutor(blog.author.name)">{{ blog.author.name }}</span></p>
+            <p class="summary">{{ blog.summary }}</p>
+            <div class="tags">
+              <span *ngFor="let tag of blog.tags" class="tag" (click)="mostrarEtiqueta(tag)">
+                {{ tag }}
+              </span>
+            </div>
+            <p>
+              {{ blog.updatedAt >= blog.createdAt ? ('Actualizado el ' + (blog.updatedAt | date:'dd/MM/yy')) : ('Publicado el ' + (blog.createdAt | date:'dd/MM/yy')) }}
+              a las {{ blog.updatedAt >= blog.createdAt ? (blog.updatedAt | date:'hh:mm a') : (blog.createdAt | date:'hh:mm a') }}
+              &#183; {{ blog.views }} visitas &#183; {{ blog.likes }} likes
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'autores'" class="row">
+    <div class="col-md-12">
+      <!-- Mostrar "loading" primero y luego mostrar los datos o el error -->
+      <div *ngIf="infoAutoresObtenida; else loading">
+        <div *ngIf="autores.length > 0; else error">
+          <div class="screen">
+            <div class="treemap">
+              <div *ngFor="let autor of autores" class="tag" (click)="mostrarAutor(autor._id)" 
+                   [ngStyle]="{'width.px': autor.total * 150, 'height.px': autor.total * 50}">
+                <span>{{ autor._id }} ({{ autor.total }})</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'tags'" class="row">
+    <div class="col-md-12">
+      <div *ngIf="infoTagsObtenida else loading">
+        <div *ngIf="tags.length > 0 else error">
+          <div class="screen">
+            <div class="treemap">
+              <div *ngFor="let tag of tags" class="tag" (click)="mostrarEtiqueta(tag._id)" [ngStyle]="{'width.px': tag.total * 150, 'height.px': tag.total * 50}">
+                <span>{{ tag._id }} ({{ tag.total }})</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'detalle'" class="row">
+    <div class="col-md-12">
+      <!-- Mostrar "loading" primero y luego mostrar los datos o el error -->
+        <div *ngIf="blogSeleccionado; else loading">
+          <div class="screen">
+            <div class="blog">
+              <h2 class="title">{{ blogSeleccionado.title }}</h2>
+              <p class="py-2">Por <span class="author" (click)="mostrarAutor(blogSeleccionado.author.name)">{{ blogSeleccionado.author.name }}</span></p>
+              <p class="summary">{{ blogSeleccionado.summary }}</p>
+              <markdown class="blogContent" [data]="blogSeleccionado.content"></markdown>
+              <div class="tags">
+                <span *ngFor="let tag of blogSeleccionado.tags" class="tag" (click)="mostrarEtiqueta(tag)">
+                  {{ tag }}
+                </span>
+              </div>
+              <p>
+                {{ blogSeleccionado.updatedAt >= blogSeleccionado.createdAt ? ('Actualizado el ' + (blogSeleccionado.updatedAt | date:'dd/MM/yy')) : ('Publicado el ' + (blogSeleccionado.createdAt | date:'dd/MM/yy')) }}
+                a las {{ blogSeleccionado.updatedAt >= blogSeleccionado.createdAt ? (blogSeleccionado.updatedAt | date:'hh:mm a') : (blogSeleccionado.createdAt | date:'hh:mm a') }}
+                &#183; {{ blogSeleccionado.views }} visitas &#183; {{ blogSeleccionado.likes }} likes
+              </p>   
+                <div class="center">
+                  <button id="like" class="like" (click)="like(blogSeleccionado._id)">
+                    <ng-lottie [options]="options" (animationCreated)="animationCreated($event)" />
+                  </button>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  
+
+  <div *ngSwitchDefault class="row">
+    <div class="col-md-12">
+      <!-- Contenido por defecto -->
+      <p>Selecciona una opción...</p>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <img src="assets/loading.svg" width="10%" alt="Cargando...">
+  </div>
+</ng-template>
+
+<ng-template #error>
+  <div class="error">
+    <h3>{{ errorMessage }}</h3>
+    <div *ngIf="blogs_filtered.length === 0" >
+      <button class="btn btn-danger" (click)="eliminarFiltros()" title="Eliminar todos los filtros">Eliminar todos los filtros</button>
+    </div>
+  </div>
+</ng-template>

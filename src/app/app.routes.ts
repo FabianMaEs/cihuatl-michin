@@ -12,6 +12,7 @@ import { EspeciesNativasComponent } from './especies-nativas/especies-nativas.co
 import { QuizHomeComponent } from './quiz-home/quiz-home.component';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { ColorearComponent } from './colorear/colorear.component';
+import { BlogsComponent } from './blogs/blogs.component';
 
 // Exportar las rutas de la aplicación
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
     { path: 'especies-nativas', component: EspeciesNativasComponent},
     { path: 'ahorcado', component: AhorcadoComponent},
     { path: 'colorear', component: ColorearComponent},
+    { path: 'blogs', component: BlogsComponent},
     { path: '', redirectTo: 'index', pathMatch: 'full', data: { animation: 'HomePage' } },
 ];
 

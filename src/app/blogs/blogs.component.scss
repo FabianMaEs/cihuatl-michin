@@ -1,0 +1,370 @@
+@import "./../styles/colores.scss";
+
+/* Fuentes */
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, $black-pearl, $william);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+    padding: 20px;
+    color: $blue-chill;
+    text-align: center;
+}
+
+.container {
+    min-height: 60vh;
+}
+
+.blogContent {
+    
+    padding-bottom: 0.5rem;
+    
+    ::ng-deep .galery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    ::ng-deep .galery figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ::ng-deep .galery img {
+        width: 80%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    ::ng-deep .galery figcaption {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 8px;
+        font-style: italic;
+        margin-bottom: 20px;
+    }
+
+
+    ::ng-deep img {
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+        height: auto;
+        border-radius: 5px;
+        max-width: 628px;
+    }
+
+    ::ng-deep figcaption {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 8px;
+        font-style: italic;
+        margin-bottom: 20px;
+    }
+
+
+    /* Estilos para el texto */
+    ::ng-deep p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+
+    /* Estilos para encabezados */
+    ::ng-deep h1, ::ng-deep h2, ::ng-deep h3 {
+        color: #222;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    ::ng-deep h1 {
+        font-size: 2rem;
+    }
+
+    ::ng-deep h2 {
+        font-size: 1.5rem;
+    }
+
+    ::ng-deep h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Estilos para listas */
+    ::ng-deep ul, ::ng-deep ol {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    ::ng-deep li {
+        font-size: 1rem;
+        color: #444;
+    }
+
+}
+
+
+
+.blog {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 10px 10px 25px -5px rgba(0,0,0,0.50);
+    background: linear-gradient(135deg, #edf7ed 70%, #d7ead8 30%);
+
+    
+    .title {
+        margin: 0;
+        font-size: 2em;
+        color: $blue-chill;
+        cursor: pointer;
+        
+        &:hover {
+            color: $anzac;
+            transition: color 0.3s;
+        }
+        &:not(:hover) {
+            color: $blue-chill;
+            transition: color 0.3s;
+        }
+    }
+
+    h2 {
+        
+        margin: 0;
+        font-size: 1.5em;
+    }
+
+
+    .author {
+        color: rgb(66, 66, 66);
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 1.1em;
+        cursor: pointer;
+        link {
+            color: $blue-chill;
+        }
+
+        &:hover {
+            /* subrayado */
+            text-decoration: underline;
+            transition: text-decoration 0.3s;
+        }
+    }
+
+    .summary {
+        font-size: 1.3em;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: #333;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+
+    .tag {
+        background: $blue-chill;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        text-transform:capitalize;
+
+        &:hover {
+            background: $anzac;
+            transition: background 0.3s;
+        }
+
+        &:not(:hover) {
+            background: $blue-chill;
+            transition: background 0.3s;
+        }
+    }
+}
+
+.verTodo{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #edf7ed, #d7ead8);
+    color: $blue-chill;
+    box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75);
+    
+    
+    h4{
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        &:hover {
+            color: $anzac;
+            transition: color 0.3s;
+        }
+        &:not(:hover) {
+            color: $blue-chill;
+            transition: color 0.3s;
+        }
+    }
+}
+
+.top {
+    margin-bottom: 1rem;
+
+    .verDetalle {
+        display: flex;
+        flex-wrap: wrap; // permite que el contenido se acomode en varias líneas
+        justify-content: space-between;
+        align-items: flex-start; // opcional, mejora visual al envolver
+      
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: linear-gradient(135deg, #edf7ed, #d7ead8);
+        color: $blue-chill;
+        box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.75);
+      
+        .left {
+          display: flex;
+          flex-wrap: wrap; // para que los botones se acomoden también
+          gap: 10px; // espaciado entre botones
+          flex: 1; // ocupa todo el espacio disponible
+        }
+      
+        .right {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          margin-left: auto; // empuja el botón a la derecha
+          margin-top: 10px;
+        }
+      }
+      
+}
+
+
+
+.screen {
+    min-height: 80vh;
+}
+
+.treemap {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 10px 10px 25px -5px rgba(0,0,0,0.50);
+    background: linear-gradient(135deg, #edf7ed 70%, #d7ead8 30%);
+
+    
+    .tag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-height: 300px;
+        max-width: 300px;
+        background: $blue-chill;
+        color: white;
+        padding: 5px;
+        border-radius: 30px;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        text-transform:capitalize;
+
+        &:hover {
+            background: $anzac;
+            transition: background 0.3s;
+        }
+
+        &:not(:hover) {
+            background: $blue-chill;
+            transition: background 0.3s;
+        }
+    }
+
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 90vh;
+    text-align: center;
+    background-color: #f8d7da; // Rojo claro
+    color: #721c24; // Texto rojo oscuro
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    h3 {
+      margin: 0;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.8); // Fondo semitransparente
+      border-radius: 8px;
+    }
+    button {
+        margin-top: 1rem;
+    }
+}
+
+.verTodo h4.active {
+  font-weight: bold;
+  color: $anzac;
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.like {
+    all: unset; /* Elimina todos los estilos predeterminados */
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    display: inline-block; /* Asegura que tome el tamaño correcto */
+    text-shadow: #222 0px 0px 5px;
+}
+  
