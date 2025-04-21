@@ -130,10 +130,10 @@ export class BlogsComponent {
     this.markdown = this.blogSeleccionado ? this.blogSeleccionado.content : '';
     log('Blog seleccionado: ', this.blogSeleccionado);
     const blogSeleccionado = this.blogSeleccionado;
-    const blog = blogSeleccionado && blogSeleccionado._id 
+    const blog = blogSeleccionado?._id 
       ? this.blogs.find(b => b._id === blogSeleccionado._id) 
       : null;
-      
+
     if (blog) {
       blog.views = this.blogSeleccionado?.views ?? blog.views;
       blog.likes = this.blogSeleccionado?.likes ?? blog.likes;
