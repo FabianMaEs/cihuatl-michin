@@ -70,7 +70,7 @@ export class BlogsService {
     }
   }
 
-  async like(id: string, like: boolean = true) {
+  async like(id: string, like = true) {
     try {
       log('Dando like (service)...');
       const response = await fetch(`${this.serverUrl}/like/${id}/${like}`, {
