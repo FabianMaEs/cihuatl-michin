@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } fro
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { log } from '../logger';
 
 @Component({
   selector: 'app-colorear',
@@ -41,19 +42,16 @@ export class ColorearComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private sanitizer: DomSanitizer,
-    private renderer: Renderer2
   ) {}
 
   ngOnInit() {
-    this.http
-      .get('assets/dibujos/pez.svg', { responseType: 'text' })
-      .subscribe((svg) => {
-        const svgElement = this.sanitizer.bypassSecurityTrustHtml(svg);
-        const svgHtml = svgElement as string;
-        const div = this.dibujoContainer.nativeElement;
-        div.innerHTML = svgHtml;
-        this.agregarEventosDeColor(); // Agregar eventos de color
-      });
+    // Elimina la sanitización innecesaria
+    this.http.get('assets/dibujos/pez.svg', { responseType: 'text' })
+    .subscribe((svg) => {
+      this.dibujoContainer.nativeElement.innerHTML = svg;
+      this.agregarEventosDeColor();
+    });
+
   }
 
   positionX = 0;
@@ -78,16 +76,11 @@ export class ColorearComponent implements OnInit {
 
     partes.forEach((parte: HTMLElement) => {
       parte.addEventListener('click', () => {
-        console.log('Parte seleccionada:', parte.id);
+        log('Parte seleccionada:', parte.id);
         // Modificar directamente el estilo de relleno
         parte.style.fill = this.colorSeleccionado;
       });
     });
-  }
-
-  // Método para sanitizar el color
-  getSafeColor(color: string) {
-    return this.sanitizer.bypassSecurityTrustStyle(color);
   }
 
   seleccionarColor(color: string) {
